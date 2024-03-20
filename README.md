@@ -20,6 +20,11 @@ The workflow defined in `.github/workflows/scrape.yaml` runs on a defined schedu
 4. Run the python script `script.py` to scrape data
 5. Commit any updated data files to the Git repository
 
+## Changes made by J. G. Murphy
+
+Whereas previously the scraper would find once per day the headline of the main newspaper, the altered version
+now scrapes the headliine of the media page (altered css class scraper and url of DP link).
+
 ## Scheduling
 
 The workflow schedule is configured with [cron syntax](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule) to run:
