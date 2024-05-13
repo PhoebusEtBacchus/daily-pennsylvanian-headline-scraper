@@ -48,6 +48,7 @@ jobs:
 
       - name: 🕵️‍♂️ Scrape content and output
         run: |
+          pip3 install pipenv --upgrade  
           python3 -m pipenv install --deploy --dev  
           python3 -m pipenv install requests
           python3 -m pipenv run python ./script.py
