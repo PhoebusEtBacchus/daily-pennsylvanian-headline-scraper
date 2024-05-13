@@ -4,7 +4,7 @@ on:
   pull_request:
     branches: [main]
   schedule:
-    - cron: "* * * * *"  # 📅 Scrape once a day at 8PM, see crontab.guru for help
+    - cron: "0 20 * * *"  # 📅 Scrape once a day at 8PM, see crontab.guru for help
 
 name: Scrape Update 🔄
 jobs:
@@ -43,16 +43,11 @@ jobs:
         if: steps.cache-pipenv.outputs.cache-hit != 'true'
         run: |
           touch Pipfile
-          python3 -m pipenv install --deploy --dev
-          python3 -m pipenv install requests
+          pipenv install --deploy --dev
 
       - name: 🕵️‍♂️ Scrape content and output
         run: |
-          python3 pip3 install -U --force-reinstall virtualenv  
-          python3 pip3 install pipenv --upgrade pipenv wheel
-          python3 -m pipenv install --deploy --dev  
-          python3 -m pipenv install requests
-          python3 -m pipenv run python ./script.py
+          pipenv run python ./script.py
 
       - name: 🚀 Commit generated logs
         uses: EndBug/add-and-commit@v9
