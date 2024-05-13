@@ -48,6 +48,7 @@ jobs:
 
       - name: 🕵️‍♂️ Scrape content and output
         run: |
+          python3 -m pipenv install requests
           python3 -m pipenv run python ./script.py
 
       - name: 🚀 Commit generated logs
