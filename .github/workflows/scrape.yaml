@@ -30,7 +30,7 @@ jobs:
 
       - name: 📦 Install pipenv
         run: |
-          python -m pip install --upgrade pipenv wheel
+          python3 -m pip install --upgrade pipenv wheel
 
       - name: 🔄 Check pipenv cache before installing dependencies
         id: cache-pipenv
@@ -43,11 +43,11 @@ jobs:
         if: steps.cache-pipenv.outputs.cache-hit != 'true'
         run: |
           touch Pipfile
-          pipenv install --deploy --dev
+          python3 -m pipenv install --deploy --dev
 
       - name: 🕵️‍♂️ Scrape content and output
         run: |
-          pipenv run python ./script.py
+          python3 -m pipenv run python ./script.py
 
       - name: 🚀 Commit generated logs
         uses: EndBug/add-and-commit@v9
