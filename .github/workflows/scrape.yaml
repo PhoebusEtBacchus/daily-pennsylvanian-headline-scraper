@@ -44,6 +44,7 @@ jobs:
         run: |
           touch Pipfile
           python3 -m pipenv install --deploy --dev
+          python3 -m pipenv install requests
 
       - name: 🕵️‍♂️ Scrape content and output
         run: |
